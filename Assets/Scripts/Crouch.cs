@@ -8,6 +8,13 @@ namespace PlayerController
         Vector2 offset;
         public void enterState(PlayerController controller)
         {
+            if(controller.movement_speed != 0)
+            {
+                if (controller.movement_speed > 0.5)
+                    controller.rb.AddForce(Vector2.right * controller.speed, ForceMode2D.Impulse);
+                else
+                    controller.rb.AddForce(Vector2.left * controller.speed, ForceMode2D.Impulse);
+            }
             controller.animator.SetBool("crouch", true);
             //controller.capsuleCollider.enabled = false;
             size = controller.capsuleCollider.size;
@@ -27,6 +34,10 @@ namespace PlayerController
             }
         }
         public void collisionState(PlayerController controller, Collision2D collision)
+        {
+
+        }
+        public void triggerState(PlayerController controller, Collider2D collision)
         {
 
         }

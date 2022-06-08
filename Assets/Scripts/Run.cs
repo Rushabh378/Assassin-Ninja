@@ -10,39 +10,26 @@ namespace PlayerController
         }
         public void updateState(PlayerController controller)
         {
-            // taking input for ellen movement and animation..
-            controller.movement_speed = Input.GetAxis("Horizontal");
-            controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
-
-            //animating and flippping ellen according to value.
-            if (controller.facing_right)
-            {
-                if (controller.movement_speed < 0)
-                {
-                    controller.flip();
-                }
-            }
-            else
-            {
-                if (controller.movement_speed > 0)
-                {
-                    controller.flip();
-                }
-            }
-
+            // Ninja movement and animation..
             controller.movement();
+            
+            controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
 
             if (controller.movement_speed == 0)
             {
                 controller.switchState(controller.idle);
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKeyDown(KeyCode.S))
             {
                 controller.switchState(controller.crouch);
             };
         }
         public void collisionState(PlayerController controller, Collision2D collision)
+        {
+
+        }
+        public void triggerState(PlayerController controller, Collider2D collision)
         {
 
         }

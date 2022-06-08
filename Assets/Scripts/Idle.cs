@@ -26,5 +26,9 @@ namespace PlayerController
         {
 
         }
+        public void triggerState(PlayerController controller, Collider2D collision)
+        {
+
+        }
     }
 }
