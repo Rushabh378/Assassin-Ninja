@@ -12,6 +12,7 @@ namespace PlayerController
         {
             // Ninja movement and animation..
             controller.movement();
+            controller.Attack();
             
             controller.animator.SetFloat("speed", Mathf.Abs(controller.movement_speed));
 

@@ -104,5 +104,14 @@ namespace PlayerController
             transform.Rotate(0f, 180, 0f);
             facing_right = !facing_right;
         }
+        public void Attack()
+        { 
+            if(Input.GetMouseButtonDown(0))
+                animator.SetBool("Attack", true);  
+        }
+        public void NinjaAttecked()
+        {
+            animator.SetBool("Attack", false);
+        }
     }
 }

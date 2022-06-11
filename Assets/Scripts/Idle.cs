@@ -21,6 +21,7 @@ namespace PlayerController
             {
                 controller.switchState(controller.crouch);
             }
+            controller.Attack();
         }
         public void collisionState(PlayerController controller, Collision2D collision)
         {
