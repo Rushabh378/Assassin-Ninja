@@ -18,7 +18,9 @@ namespace EnemySetup
         [HideInInspector]
         public bool AleartMode = false;
         private Animator animator;
-        private Transform target = null;
+        [HideInInspector]
+        public Transform target = null;
+        private float combetDistance = 3f;
         private void Start()
         {
             animator = GetComponent<Animator>();
@@ -26,7 +28,12 @@ namespace EnemySetup
         private void Update()
         {
             if (direction == 0)
-                animator.SetInteger("AnimState", (int)AnimState.idle);
+            {
+                if (AleartMode)
+                    animator.SetInteger("AnimState", (int)AnimState.combetidle);
+                else
+                    animator.SetInteger("AnimState", (int)AnimState.idle);
+            }
             else
                 animator.SetInteger("AnimState", (int)AnimState.run);
         }
@@ -74,13 +81,29 @@ namespace EnemySetup
         }
         public void followTarget()
         {
-            transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.fixedDeltaTime);
+            float distance = Vector2.Distance(transform.position, target.position);
+            Debug.Log("distance : " + distance);
+            if (distance <= combetDistance)
+                direction = 0;
+            else
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.fixedDeltaTime);
+                Debug.Log("following target");
 
-            //fliping enemy towerds player
-            if (target.position.x > transform.position.x && !facingRight)
-                flip();
-            else if (target.position.x < transform.position.x && facingRight)
-                flip();
+                //fliping enemy towerds player
+                if (target.position.x > transform.position.x && !facingRight)
+                {
+                    direction = 1f;
+                    flip();
+                }
+                else if (target.position.x < transform.position.x && facingRight)
+                {
+                    direction = -1f;
+                    flip();
+                }
+            }
+            
+                
         }
 
     }
