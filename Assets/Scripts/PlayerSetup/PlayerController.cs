@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PlayerController
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IDamageable
     {
         IControl currentState;
         public Idle idle = new Idle();
@@ -26,6 +26,7 @@ namespace PlayerController
         public bool isJumping = false;
         public float speed = 5f;
         public bool facing_right = true;
+        private float health = 100;
 
         // Start is called before the first frame update
         void Start()
@@ -59,6 +60,14 @@ namespace PlayerController
                 isJumping = false;
             }
             currentState.triggerState(this,collision);
+        }
+        public void getDamage(float damage)
+        {
+            if (damage >= health)
+            {
+                //animator.SetTrigger("damage");
+                Debug.Log("Player got Hit!");
+            }
         }
         public void movement()
         {

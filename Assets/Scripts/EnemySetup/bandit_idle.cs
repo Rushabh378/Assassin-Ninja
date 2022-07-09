@@ -8,7 +8,7 @@ namespace EnemySetup
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            
+            //TimerManagement.setTimer( () => animator.SetInteger("AnimStat", (int)EnemySetup.AnimState.run), 2f);
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
