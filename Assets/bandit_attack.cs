@@ -5,8 +5,8 @@ public class bandit_attack : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Damager.DoDamage();
-        TimerManagement.setTimer(() => animator.SetBool("Attack", false), 1f);
+        TimerManagement.setTimer(() => Damager.DoDamage(), 0.5f);
+        animator.SetBool("Attack", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

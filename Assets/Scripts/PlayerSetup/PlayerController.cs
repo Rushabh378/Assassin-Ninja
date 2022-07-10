@@ -5,10 +5,10 @@ namespace PlayerController
     public class PlayerController : MonoBehaviour, IDamageable
     {
         IControl currentState;
-        public Idle idle = new Idle();
-        public Run run = new Run();
-        public Jump jump = new Jump();
-        public Crouch crouch = new Crouch();
+        public Idle idle = new();
+        public Run run = new();
+        public Jump jump = new();
+        public Crouch crouch = new();
 
         [HideInInspector]
         public Animator animator;
@@ -63,11 +63,8 @@ namespace PlayerController
         }
         public void getDamage(float damage)
         {
-            if (damage >= health)
-            {
-                //animator.SetTrigger("damage");
-                Debug.Log("Player got Hit!");
-            }
+            Debug.Log("Player got Hit!");
+            animator.SetTrigger("damage");
         }
         public void movement()
         {
@@ -117,10 +114,6 @@ namespace PlayerController
         { 
             if(Input.GetMouseButtonDown(0))
                 animator.SetBool("Attack", true);  
-        }
-        public void NinjaAttecked()
-        {
-            animator.SetBool("Attack", false);
         }
     }
 }

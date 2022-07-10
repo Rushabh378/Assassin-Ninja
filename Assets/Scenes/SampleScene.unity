@@ -7346,10 +7346,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 499925267}
     m_Modifications:
-    - target: {fileID: 1439545182, guid: 71cce0e18cda5cf41922fd12f108ed51, type: 3}
-      propertyPath: m_Intensity
-      value: 1.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1226778788418928, guid: 71cce0e18cda5cf41922fd12f108ed51, type: 3}
       propertyPath: m_Name
       value: Fire Lentern
@@ -15791,7 +15787,7 @@ GameObject:
   - component: {fileID: 617269738}
   - component: {fileID: 617269740}
   - component: {fileID: 617269739}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DamageArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15853,7 +15849,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d59b85db7420394a837af525d9fb440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
 --- !u!1 &1119776404
 GameObject:
   m_ObjectHideFlags: 3
@@ -16196,7 +16191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1494994686726090807, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
       propertyPath: unfoloowDistance
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2183501755a214591e802f3aff33d2, type: 3}
