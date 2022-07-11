@@ -15,8 +15,10 @@ namespace EnemySetup
         public float unfoloowDistance = 4f;
         public int health = 100;
         public GameObject Detector;
-        private float direction = -1f;
-        private bool facingRight = false;
+        [HideInInspector]
+        public float direction = -1f;
+        [HideInInspector]
+        public bool facingRight = false;
         [HideInInspector]
         public bool AleartMode = false;
         //private bool onGround = true;

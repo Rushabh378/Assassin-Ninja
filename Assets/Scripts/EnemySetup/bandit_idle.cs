@@ -4,13 +4,26 @@ namespace EnemySetup
 {
     public class bandit_idle : StateMachineBehaviour
     {
-
+        EnemyController enemy;
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            //TimerManagement.setTimer( () => animator.SetInteger("AnimStat", (int)EnemySetup.AnimState.run), 2f);
+            enemy = animator.gameObject.GetComponent<EnemyController>();
+            TimerManagement.setTimer(() => backToRunState(animator), 1f);
         }
-
+        public void backToRunState(Animator animator)
+        {
+            if (enemy != null)
+            {
+                if (enemy.facingRight)
+                    enemy.direction = 1f;
+                else
+                    enemy.direction = -1f;
+            }
+            else
+                Debug.Log("enemy controler not found");
+            animator.SetInteger("AnimStat", (int)AnimState.run);
+        }
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
