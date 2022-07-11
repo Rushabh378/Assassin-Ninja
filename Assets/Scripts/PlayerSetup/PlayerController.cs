@@ -2,13 +2,13 @@ using UnityEngine;
 
 namespace PlayerController
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, IDamageable
     {
         IControl currentState;
-        public Idle idle = new Idle();
-        public Run run = new Run();
-        public Jump jump = new Jump();
-        public Crouch crouch = new Crouch();
+        public Idle idle = new();
+        public Run run = new();
+        public Jump jump = new();
+        public Crouch crouch = new();
 
         [HideInInspector]
         public Animator animator;
@@ -26,6 +26,7 @@ namespace PlayerController
         public bool isJumping = false;
         public float speed = 5f;
         public bool facing_right = true;
+        private float health = 100;
 
         // Start is called before the first frame update
         void Start()
@@ -59,6 +60,11 @@ namespace PlayerController
                 isJumping = false;
             }
             currentState.triggerState(this,collision);
+        }
+        public void getDamage(float damage)
+        {
+            Debug.Log("Player got Hit!");
+            animator.SetTrigger("damage");
         }
         public void movement()
         {
@@ -108,10 +114,6 @@ namespace PlayerController
         { 
             if(Input.GetMouseButtonDown(0))
                 animator.SetBool("Attack", true);  
-        }
-        public void NinjaAttecked()
-        {
-            animator.SetBool("Attack", false);
         }
     }
 }
