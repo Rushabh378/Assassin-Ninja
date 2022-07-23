@@ -12,7 +12,7 @@ namespace EnemySetup
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             controller = animator.GetComponent<EnemyController>();
-            TimerManagement.setTimer(() => EnemyAttack(animator), 3f);
+            TimerManagement.setTimer(() => EnemyAttack(animator), 0.5f);
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

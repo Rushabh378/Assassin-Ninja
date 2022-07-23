@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 namespace EnemySetup
 {
@@ -9,11 +9,15 @@ namespace EnemySetup
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             enemy = animator.gameObject.GetComponent<EnemyController>();
-            TimerManagement.setTimer(() => backToRunState(animator), 1f);
+            TimerManagement.setTimer(() => backToRunState(animator), countDown: 2f);
         }
         public void backToRunState(Animator animator)
         {
-            if (enemy != null)
+            if (enemy.petroling)
+            {
+                enemy.flip();
+            }
+            if (enemy != null )
             {
                 if (enemy.facingRight)
                     enemy.direction = 1f;

@@ -1,19 +1,23 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+
 
 namespace EnemySetup
 {
-    enum AnimState
+    public enum AnimState
     {
         idle,
         combetidle,
         run
     }
-    public class EnemyController : MonoBehaviour
+    public class EnemyController : MonoBehaviour,IDamageable
     {
+        public bool petroling = true;
         public float sightLength = 2;
         public float movementSpeed = 2f;
         public float unfoloowDistance = 4f;
         public int health = 100;
+        public int damage = 100;
         public GameObject Detector;
         [HideInInspector]
         public float direction = -1f;
@@ -24,6 +28,8 @@ namespace EnemySetup
         //private bool onGround = true;
         private Animator animator;
         private Rigidbody2D RB;
+        private BoxCollider2D boxCollider;
+        private new Light2D light;
         [HideInInspector]
         public Transform target = null;
         private float combetDistance = 2.5f;
@@ -31,11 +37,15 @@ namespace EnemySetup
         {
             animator = GetComponent<Animator>();
             RB = GetComponent<Rigidbody2D>();
+            boxCollider = GetComponent<BoxCollider2D>();
+            light = GetComponentInChildren<Light2D>();
         }
         private void Update()
         {
-            if (direction == 0)
+            if (direction == 0 || petroling == false)
             {
+                direction = 0;
+
                 if (AleartMode)
                     animator.SetInteger("AnimState", (int)AnimState.combetidle);
                 else
@@ -43,6 +53,8 @@ namespace EnemySetup
             }
             else
                 animator.SetInteger("AnimState", (int)AnimState.run);
+
+            //Debug.Log("aleartmod : " + AleartMode);
 
             if (Input.GetKey(KeyCode.I))
                 jump();
@@ -52,7 +64,7 @@ namespace EnemySetup
             RaycastHit2D hit2D = Physics2D.Raycast(Detector.transform.position, -Detector.transform.right, sightLength, 1);
             if (hit2D)
             {
-                Debug.Log("Enemy detected" + hit2D.collider.gameObject.name);
+                //Debug.Log("Enemy detected" + hit2D.collider.gameObject.name);
                 Debug.DrawRay(Detector.transform.position, -Detector.transform.right, Color.yellow, sightLength);
 
                 if (hit2D.collider.GetComponent<PlayerController.PlayerController>() != null)
@@ -84,14 +96,18 @@ namespace EnemySetup
             }
                 
         }
-        /*public void getDamage(float damage)
+        public void getDamage(int damage)
         {
+            //Debug.Log("Enemy got hit!");
             if(damage >= health)
             {
-                animator.SetTrigger("Damage");
-                Debug.Log("Player got Hit!");
+                RB.gravityScale = 0;
+                boxCollider.enabled = false;
+                light.enabled = false;
+                animator.SetBool("Dead", true);
             }
-        }*/
+            animator.SetTrigger("Damage");
+        }
         public void movement()
         {
             Vector2 position = transform.position;
@@ -113,7 +129,7 @@ namespace EnemySetup
         public void followTarget()
         {
             float distance = Vector2.Distance(transform.position, target.position);
-            Debug.Log("distance : " + distance);
+            //Debug.Log("distance : " + distance);
             if (distance >= unfoloowDistance)
                 AleartMode = false;
             if (distance <= combetDistance)
@@ -126,12 +142,12 @@ namespace EnemySetup
                 //fliping enemy towerds player
                 if (target.position.x > transform.position.x && !facingRight)
                 {
-                    direction = 1f;
+                    direction = -1f;
                     flip();
                 }
                 else if (target.position.x < transform.position.x && facingRight)
                 {
-                    direction = -1f;
+                    direction = 1f;
                     flip();
                 }
             }

@@ -2,10 +2,21 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    public static float damage = 100;
-    private static IDamageable damageable;
-    private static bool canDamage = false;
-    private void OnTriggerStay2D(Collider2D collision)
+    private IDamageable damageable;
+    private bool canDamage = false;
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        damageable = collision.gameObject.GetComponent<IDamageable>();
+        //Debug.Log("front enemy:" + collision.gameObject.name);
+
+        if (damageable != null)
+        {
+            canDamage = true;
+        }
+        else
+            canDamage = false;
+    }
+    /*private void OnTriggerStay2D(Collider2D collision)
     { 
         damageable = collision.gameObject.GetComponent<IDamageable>();
 
@@ -15,8 +26,8 @@ public class Damager : MonoBehaviour
         }
         else
             canDamage = false;
-    }
-    public static void DoDamage()
+    }*/
+    public void DoDamage(int damage)
     {
         if (canDamage)
             damageable.getDamage(damage);

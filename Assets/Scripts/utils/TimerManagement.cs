@@ -1,7 +1,12 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum AnimState
+{
+    idle,
+    combetidle,
+    run
+}
 public class TimerManagement
 {
     private static List<TimerManagement> activeTimerList;

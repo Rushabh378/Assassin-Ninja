@@ -18,6 +18,9 @@ namespace PlayerController
         public CapsuleCollider2D capsuleCollider;
         [HideInInspector]
         public BoxCollider2D groundCheck;
+        public GameObject gameoverPanle;
+        private ParticleSystem deathParticle;
+        private Damager damager;
 
         public float jump_force = 5f;
         [HideInInspector]
@@ -25,8 +28,10 @@ namespace PlayerController
         [HideInInspector]
         public bool isJumping = false;
         public float speed = 5f;
+        [HideInInspector]
         public bool facing_right = true;
         private float health = 100;
+        public int damage = 100;
 
         // Start is called before the first frame update
         void Start()
@@ -35,10 +40,11 @@ namespace PlayerController
             animator = GetComponent<Animator>();
             rb = GetComponent<Rigidbody2D>();
             capsuleCollider = GetComponent<CapsuleCollider2D>();
+            deathParticle = GetComponentInChildren<ParticleSystem>();
+            damager = GetComponentInChildren<Damager>();
 
             currentState = idle;
             currentState.enterState(this);
-
         }
 
         // Update is called once per frame
@@ -61,11 +67,23 @@ namespace PlayerController
             }
             currentState.triggerState(this,collision);
         }
-        public void getDamage(float damage)
+        public void getDamage(int damage)
         {
             Debug.Log("Player got Hit!");
-            animator.SetTrigger("damage");
+            if(damage >= health)
+            {
+                animator.enabled = false;
+                deathParticle.Play();
+                TimerManagement.setTimer(() => this.gameObject.SetActive(false), 2, "deathTimer");
+                gameoverPanle.SetActive(true);
+                //Destroy(this.gameObject);
+            }
         }
+        /*private void OnDestroy()
+        {
+            deathParticle.Play();
+            gameoverPanle.SetActive(true);
+        }*/
         public void movement()
         {
             movement_speed = Input.GetAxis("Horizontal");
@@ -111,9 +129,17 @@ namespace PlayerController
             facing_right = !facing_right;
         }
         public void Attack()
-        { 
-            if(Input.GetMouseButtonDown(0))
-                animator.SetBool("Attack", true);  
+        {
+            if(animator.runtimeAnimatorController.name == "Sword Ninja")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    animator.SetBool("Attack", true);
+                    TimerManagement.setTimer(() => damager.DoDamage(damage), 0.3f);
+                }
+            }
+            
+            
         }
     }
 }
