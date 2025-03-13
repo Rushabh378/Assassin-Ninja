@@ -582,14 +582,6 @@ PrefabInstance:
       value: 0.005032491
       objectReference: {fileID: 0}
     - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.b
-      value: 0.02745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.g
-      value: 0.22745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 15.819219
       objectReference: {fileID: 0}
@@ -4883,7 +4875,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1, y: 1}
+    m_SensorSize: {x: 1.6603174, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -32696,7 +32688,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -33078,14 +33069,6 @@ PrefabInstance:
       value: 0.0013617914
       objectReference: {fileID: 0}
     - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.b
-      value: 0.02745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.g
-      value: 0.22745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 12.954273
       objectReference: {fileID: 0}
@@ -33288,7 +33271,6 @@ MonoBehaviour:
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
-  m_AlphaBlendOnOverlap: 0
   m_OverlapOperation: 0
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
@@ -33297,6 +33279,35 @@ MonoBehaviour:
   m_ShadowIntensity: 0.75
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
+  m_Vertices:
+  - position: {x: 0.9985302, y: 0.9985302, z: 0}
+    color: {r: 0.70710677, g: 0.70710677, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.9985302, y: 0.9985302, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.9985302, y: 0.9985302, z: 0}
+    color: {r: -0.70710677, g: 0.70710677, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.9985302, y: 0.9985302, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.99853003, y: -0.9985304, z: 0}
+    color: {r: -0.70710665, g: -0.7071069, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: -0.99853003, y: -0.9985304, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.99853003, y: -0.9985304, z: 0}
+    color: {r: 0.70710665, g: -0.7071069, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.99853003, y: -0.9985304, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  - position: {x: 0, y: 0, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 1}
+    uv: {x: 0, y: 0}
+  m_Triangles: 030001000800020000000100030002000100050003000800040002000300050004000300070005000800060004000500070006000500010007000800000006000700010000000700
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
@@ -33387,14 +33398,6 @@ PrefabInstance:
     - target: {fileID: 6076037817949225293, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0.0054449923
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.b
-      value: 0.02745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.g
-      value: 0.22745098
       objectReference: {fileID: 0}
     - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
       propertyPath: m_PointLightOuterRadius
@@ -34079,18 +34082,6 @@ PrefabInstance:
       value: 0.015860615
       objectReference: {fileID: 0}
     - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.b
-      value: 0.023584902
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.g
-      value: 0.22745098
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6076037817949225294, guid: 107b97acc08302b419be3fed11ba4648, type: 3}
       propertyPath: m_PointLightOuterRadius
       value: 16.444866
       objectReference: {fileID: 0}
@@ -34296,7 +34287,6 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0

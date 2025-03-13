@@ -132,7 +132,7 @@ namespace PlayerController
         {
             if(animator.runtimeAnimatorController.name == "Sword Ninja")
             {
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.K))
+                if (Input.GetMouseButtonDown(0))
                 {
                     animator.SetBool("Attack", true);
                     TimerManagement.setTimer(() => damager.DoDamage(damage), 0.3f);
