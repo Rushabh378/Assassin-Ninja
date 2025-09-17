@@ -54,17 +54,12 @@ namespace EnemySetup
             else
                 animator.SetInteger("AnimState", (int)AnimState.run);
 
-            //Debug.Log("aleartmod : " + AleartMode);
-
-            //if (Input.GetKey(KeyCode.I))
-            //    jump();
         }
         private void FixedUpdate()
         {
             RaycastHit2D hit2D = Physics2D.Raycast(Detector.transform.position, -Detector.transform.right, sightLength, 1);
             if (hit2D)
             {
-                //Debug.Log("Enemy detected" + hit2D.collider.gameObject.name);
                 Debug.DrawRay(Detector.transform.position, -Detector.transform.right, Color.yellow, sightLength);
 
                 if (hit2D.collider.GetComponent<PlayerController.PlayerController>() != null)
@@ -150,9 +145,7 @@ namespace EnemySetup
                     direction = 1f;
                     flip();
                 }
-            }
-            
-                
+            }          
         }
 
     }
