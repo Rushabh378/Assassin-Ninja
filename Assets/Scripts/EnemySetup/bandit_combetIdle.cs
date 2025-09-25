@@ -5,6 +5,7 @@ namespace EnemySetup
     
     public class bandit_combetIdle : StateMachineBehaviour
     {
+        private const float CountDown = 0.5f;
         public bool isAttacked = false;
 
         private EnemyController controller;
@@ -12,7 +13,7 @@ namespace EnemySetup
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             controller = animator.GetComponent<EnemyController>();
-            TimerManagement.setTimer(() => EnemyAttack(animator), 0.5f);
+            TimerManagement.setTimer(() => EnemyAttack(animator), CountDown);
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
