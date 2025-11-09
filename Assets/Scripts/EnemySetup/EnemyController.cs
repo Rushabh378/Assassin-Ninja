@@ -15,7 +15,7 @@ namespace EnemySetup
         public bool petroling = true;
         public float sightLength = 2;
         public float movementSpeed = 2f;
-        public float unfoloowDistance = 4f;
+        public float unfollowDistance = 4f;
         public int health = 100;
         public int damage = 100;
         public GameObject Detector;
@@ -32,7 +32,7 @@ namespace EnemySetup
         private new Light2D light;
         [HideInInspector]
         public Transform target = null;
-        private float combetDistance = 2.5f;
+        private float attackRange = 2.5f;
         private void Start()
         {
             animator = GetComponent<Animator>();
@@ -54,17 +54,12 @@ namespace EnemySetup
             else
                 animator.SetInteger("AnimState", (int)AnimState.run);
 
-            //Debug.Log("aleartmod : " + AleartMode);
-
-            if (Input.GetKey(KeyCode.I))
-                jump();
         }
         private void FixedUpdate()
         {
             RaycastHit2D hit2D = Physics2D.Raycast(Detector.transform.position, -Detector.transform.right, sightLength, 1);
             if (hit2D)
             {
-                //Debug.Log("Enemy detected" + hit2D.collider.gameObject.name);
                 Debug.DrawRay(Detector.transform.position, -Detector.transform.right, Color.yellow, sightLength);
 
                 if (hit2D.collider.GetComponent<PlayerController.PlayerController>() != null)
@@ -111,7 +106,7 @@ namespace EnemySetup
         public void movement()
         {
             Vector2 position = transform.position;
-            position.x += direction * movementSpeed * Time.fixedDeltaTime;
+            position.x += direction * movementSpeed * Time.deltaTime;
             transform.position = position;
         }
         public void jump()
@@ -130,13 +125,13 @@ namespace EnemySetup
         {
             float distance = Vector2.Distance(transform.position, target.position);
             //Debug.Log("distance : " + distance);
-            if (distance >= unfoloowDistance)
+            if (distance >= unfollowDistance)
                 AleartMode = false;
-            if (distance <= combetDistance)
+            if (distance <= attackRange)
                 direction = 0;
             else
             {
-                transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.fixedDeltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, target.position, movementSpeed * Time.deltaTime);
                 Debug.Log("following target");
 
                 //fliping enemy towerds player
@@ -150,9 +145,7 @@ namespace EnemySetup
                     direction = 1f;
                     flip();
                 }
-            }
-            
-                
+            }          
         }
 
     }
