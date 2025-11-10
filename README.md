@@ -1,3 +1,6 @@
+🎮 [**▶ Play the Game (WebGL)**](https://rushabh378.github.io/Assassin-Ninja/)
+
+
 # Assassin Ninja (Prototype)
 
 A stealth-action 2D platformer prototype built in **Unity 2022.3 LTS**.  
