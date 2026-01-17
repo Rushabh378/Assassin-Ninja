@@ -138,8 +138,6 @@ namespace PlayerController
                     TimerManagement.setTimer(() => damager.DoDamage(damage), 0.3f);
                 }
             }
-            
-            
         }
     }
 }
